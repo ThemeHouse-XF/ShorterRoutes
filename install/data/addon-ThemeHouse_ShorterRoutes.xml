@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<addon addon_id="ThemeHouse_ShorterRoutes" title="[⌂] Shorter Routes" version_string="1.0.1" version_id="1447261019" url="http://xf.themehouse.io/" install_callback_class="ThemeHouse_Install" install_callback_method="install" uninstall_callback_class="ThemeHouse_Install" uninstall_callback_method="uninstall">
+  <admin_navigation/>
+  <admin_permissions/>
+  <admin_style_properties/>
+  <admin_templates/>
+  <admin_template_modifications/>
+  <code_events/>
+  <code_event_listeners>
+    <listener event_id="controller_pre_dispatch" execute_order="10" callback_class="ThemeHouse_Listener_ControllerPreDispatch" callback_method="controllerPreDispatch" active="1" hint="" description=""/>
+    <listener event_id="file_health_check" execute_order="10" callback_class="ThemeHouse_ShorterRoutes_Listener_FileHealthCheck" callback_method="fileHealthCheck" active="1" hint="" description=""/>
+    <listener event_id="init_dependencies" execute_order="10" callback_class="ThemeHouse_Listener_InitDependencies" callback_method="initDependencies" active="1" hint="" description=""/>
+    <listener event_id="init_router_public" execute_order="10" callback_class="ThemeHouse_ShorterRoutes_Listener_InitRouterPublic" callback_method="initRouterPublic" active="1" hint="" description=""/>
+    <listener event_id="load_class" execute_order="10" callback_class="ThemeHouse_ShorterRoutes_Listener_LoadClass" callback_method="loadClassRoutePrefix" active="0" hint="XenForo_Route_Prefix_Forums" description="XenForo_Route_Prefix_Forums (For XenForo 1.2 and above)" compatibility_switch="1"/>
+    <listener event_id="load_class" execute_order="10" callback_class="ThemeHouse_ShorterRoutes_Listener_LoadClass" callback_method="loadClassRoutePrefix" active="0" hint="XenForo_Route_Prefix_Threads" description="XenForo_Route_Prefix_Threads (For XenForo 1.2 and above)" compatibility_switch="1"/>
+    <listener event_id="load_class_route_prefix" execute_order="10" callback_class="ThemeHouse_ShorterRoutes_Listener_LoadClass" callback_method="loadClassRoutePrefix" active="1" hint="" description="(For XenForo 1.1 and below)" compatibility_switch="1"/>
+  </code_event_listeners>
+  <cron/>
+  <email_templates/>
+  <email_template_modifications/>
+  <optiongroups>
+    <group group_id="th_shorterRoutes" display_order="2000" debug_only="0"/>
+    <option option_id="th_shorterRoutes_extension" edit_format="textbox" data_type="string" can_backup="1">
+      <default_value/>
+      <edit_format_params/>
+      <sub_options/>
+      <relation group_id="th_shorterRoutes" display_order="1"/>
+    </option>
+    <option option_id="th_shorterRoutes_slashAtEnd" edit_format="onoff" data_type="boolean" can_backup="1">
+      <default_value>1</default_value>
+      <edit_format_params/>
+      <sub_options/>
+      <relation group_id="th_shorterRoutes" display_order="100"/>
+    </option>
+  </optiongroups>
+  <permissions>
+    <permission_groups/>
+    <permissions/>
+    <interface_groups/>
+  </permissions>
+  <phrases>
+    <phrase title="option_group_th_shorterRoutes" version_id="1420201809" version_string="1.0.0"><![CDATA[Shorter Routes by ThemeHouse]]></phrase>
+    <phrase title="option_group_th_shorterRoutes_description" version_id="1420201809" version_string="1.0.0"><![CDATA[Options for the Shorter Routes by ThemeHouse add-on.]]></phrase>
+    <phrase title="option_th_shorterRoutes_extension" version_id="1420201809" version_string="1.0.0"><![CDATA[Add file extension to all shorter routes]]></phrase>
+    <phrase title="option_th_shorterRoutes_extension_explain" version_id="1420201809" version_string="1.0.0"><![CDATA[Enter an extension (i.e., html) to add an extension such as .html to the end of all shorter routes to improve SEO. This option works well if you disable the 'Always include forward slash' option below.]]></phrase>
+    <phrase title="option_th_shorterRoutes_slashAtEnd" version_id="1420201809" version_string="1.0.0"><![CDATA[Always include forward slash]]></phrase>
+    <phrase title="option_th_shorterRoutes_slashAtEnd_explain" version_id="1420201809" version_string="1.0.0"><![CDATA[Disabling this option will remove the forward slash at the end of URLs that don't have an action. This is only applied to shorter URLs.]]></phrase>
+  </phrases>
+  <route_prefixes/>
+  <style_properties/>
+  <templates/>
+  <public_template_modifications>
+    <modification template="footer" modification_key="th_copyrightNotice_shorterRoutes" description="Copyright notice for [⌂] Shorter Routes" execution_order="1" enabled="1" action="callback">
+      <find><![CDATA[/{xen:phrase (?:xenforo|extra)_copyright}/]]></find>
+      <replace><![CDATA[ThemeHouse_Listener_InitDependencies::copyrightNotice]]></replace>
+    </modification>
+  </public_template_modifications>
+  <bb_code_media_sites/>
+  <bb_codes/>
+</addon>
